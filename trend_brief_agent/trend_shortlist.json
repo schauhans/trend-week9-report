@@ -1,0 +1,201 @@
+
+{
+  "query_context": {
+    "brand": "Dior",
+    "market": "China luxury fashion",
+    "categories": [
+      "ready-to-wear",
+      "leather goods",
+      "bags",
+      "accessories"
+    ],
+    "source": "Xiaohongshu",
+    "cities": [
+      "Shanghai",
+      "Beijing"
+    ],
+    "week": "2026-W12"
+  },
+  "trends": [
+    {
+      "trend_id": "T001",
+      "trend_label": "Quiet Luxury Suiting",
+      "city": "Shanghai",
+      "category": "ready-to-wear",
+      "target_age_range": "30–45",
+      "cluster_summary": "Shanghai professionals styling understated, impeccably tailored suits in oatmeal, ivory, and camel — no logos, no maximalism. Posts emphasise fabric quality and silhouette over branding. Brands mentioned: The Row, Loro Piana, Brunello Cucinelli.",
+      "post_count": 5200,
+      "engagement_rate": 0.094,
+      "top_post_example": "不需要logo，面料说话 — 今天穿的是纯羊绒西装，低调才是真奢华",
+      "trending_hashtags": [
+        "#静奢风",
+        "#无logo奢侈",
+        "#高端西装"
+      ],
+      "brand_relevance": "high",
+      "week_on_week_growth": "+18%"
+    },
+    {
+      "trend_id": "T002",
+      "trend_label": "Oversized Leather Tote Revival",
+      "city": "Shanghai",
+      "category": "bags",
+      "target_age_range": "28–42",
+      "cluster_summary": "A surge in posts featuring oversized, unstructured leather totes — particularly in cognac, chocolate, and black. Styled for both office and weekend. Users comparing Bottega Veneta, Loewe, and Celine. High purchase-intent language in comments.",
+      "post_count": 4800,
+      "engagement_rate": 0.101,
+      "top_post_example": "今年包包不要硬的了，软软的大托特才是正解，装得下MacBook还好看",
+      "trending_hashtags": [
+        "#大托特包",
+        "#软皮包",
+        "#BottegaVeneta"
+      ],
+      "brand_relevance": "high",
+      "week_on_week_growth": "+24%"
+    },
+    {
+      "trend_id": "T003",
+      "trend_label": "Monochrome Winter Dressing",
+      "city": "Beijing",
+      "category": "ready-to-wear",
+      "target_age_range": "25–40",
+      "cluster_summary": "Beijing users embracing head-to-toe single-colour winter looks — dominant colours are charcoal, burgundy, and deep forest green. Outerwear is key: long coats, wide-leg trousers, same-tone knitwear. Posts have high saves and outfit recreation requests.",
+      "post_count": 6100,
+      "engagement_rate": 0.088,
+      "top_post_example": "北京冬天最显高级的穿法：全身同色系，从头到脚酒红色，真的很杀",
+      "trending_hashtags": [
+        "#同色系穿搭",
+        "#北京冬日穿搭",
+        "#高级感"
+      ],
+      "brand_relevance": "high",
+      "week_on_week_growth": "+31%"
+    },
+    {
+      "trend_id": "T004",
+      "trend_label": "Mini Bag as Statement Jewellery",
+      "city": "Shanghai",
+      "category": "bags",
+      "target_age_range": "22–35",
+      "cluster_summary": "Nano and micro bags being styled as accessories rather than functional bags — worn with evening looks or layered over larger totes. Chanel, Dior, and Jacquemus dominate. Posts focus on the bag as a collectible art object, not utility.",
+      "post_count": 3900,
+      "engagement_rate": 0.113,
+      "top_post_example": "包包不是用来装东西的，是用来装饰自己的 — 今天的迷你包比项链更吸睛",
+      "trending_hashtags": [
+        "#迷你包",
+        "#包包首饰化",
+        "#Chanel"
+      ],
+      "brand_relevance": "medium",
+      "week_on_week_growth": "+12%"
+    },
+    {
+      "trend_id": "T005",
+      "trend_label": "Structured Blazer as Outerwear",
+      "city": "Beijing",
+      "category": "ready-to-wear",
+      "target_age_range": "28–45",
+      "cluster_summary": "Beijing users styling heavy, structured blazers as standalone outerwear — replacing traditional coats for transitional weather. Preference for double-breasted styles in wool-cashmere blends. Brands mentioned: Saint Laurent, Givenchy, Max Mara.",
+      "post_count": 4400,
+      "engagement_rate": 0.079,
+      "top_post_example": "西装外套当大衣穿，北京四月必备，Saint Laurent那件真的封神",
+      "trending_hashtags": [
+        "#西装外套",
+        "#通勤穿搭",
+        "#SaintLaurent"
+      ],
+      "brand_relevance": "high",
+      "week_on_week_growth": "+9%"
+    },
+    {
+      "trend_id": "T006",
+      "trend_label": "Heritage Leather Goods Restaging",
+      "city": "Beijing",
+      "category": "leather goods",
+      "target_age_range": "30–45",
+      "cluster_summary": "Older, classic leather goods — particularly from the 90s and 2000s — being restyled in contemporary outfits. Hermès Kelly, LV Speedy, Gucci Jackie. Posts are highly aspirational with strong 'investment piece' framing. Significant engagement from 30–45 age group.",
+      "post_count": 5700,
+      "engagement_rate": 0.097,
+      "top_post_example": "妈妈的Hermès Kelly比我的新包更有味道，经典款就是跨越时代的",
+      "trending_hashtags": [
+        "#经典款包包",
+        "#Hermès",
+        "#传承奢侈品"
+      ],
+      "brand_relevance": "high",
+      "week_on_week_growth": "+21%"
+    },
+    {
+      "trend_id": "T007",
+      "trend_label": "Silk Scarf Restyling Wave",
+      "city": "Shanghai",
+      "category": "accessories",
+      "target_age_range": "22–38",
+      "cluster_summary": "Silk scarves being worn in non-traditional ways — as bag charms, halter tops, hair wraps, and belt replacements. Hermès and Dior dominate, but users also showcasing vintage finds. Tutorial-style posts are driving saves and reposts.",
+      "post_count": 7300,
+      "engagement_rate": 0.121,
+      "top_post_example": "一条Hermès丝巾的12种戴法，最后一种系在包上绝了",
+      "trending_hashtags": [
+        "#丝巾穿搭",
+        "#爱马仕丝巾",
+        "#配饰改造"
+      ],
+      "brand_relevance": "medium",
+      "week_on_week_growth": "+38%"
+    },
+    {
+      "trend_id": "T008",
+      "trend_label": "Fur Trim Maximalism",
+      "city": "Beijing",
+      "category": "ready-to-wear",
+      "target_age_range": "30–50",
+      "cluster_summary": "Beijing's cold climate driving high engagement with fur-trim and shearling details on coats, boots, and bags. Mix of real and faux fur. Brands: Fendi, Miu Miu, Max Mara. Posts lean glamorous and unapologetic — strong contrast to Shanghai's quiet luxury trend.",
+      "post_count": 4100,
+      "engagement_rate": 0.083,
+      "top_post_example": "北京的冬天就该这么穿，毛领大衣走在街上回头率200%",
+      "trending_hashtags": [
+        "#毛领大衣",
+        "#Fendi",
+        "#北京时髦精"
+      ],
+      "brand_relevance": "medium",
+      "week_on_week_growth": "+15%"
+    },
+    {
+      "trend_id": "T009",
+      "trend_label": "Investment Dressing Mindset",
+      "city": "Shanghai",
+      "category": "ready-to-wear",
+      "target_age_range": "28–45",
+      "cluster_summary": "A macro-narrative emerging across Shanghai posts: buying fewer, better pieces framed explicitly as financial investments. Content includes 'cost per wear' calculations, capsule wardrobe planning, and brand ROI comparisons. Strong crossover with personal finance community.",
+      "post_count": 8900,
+      "engagement_rate": 0.109,
+      "top_post_example": "我的穿衣哲学：一件Loro Piana顶十件快时尚，算下来其实更省钱",
+      "trending_hashtags": [
+        "#投资穿搭",
+        "#胶囊衣橱",
+        "#理性消费奢侈品"
+      ],
+      "brand_relevance": "high",
+      "week_on_week_growth": "+44%"
+    },
+    {
+      "trend_id": "T010",
+      "trend_label": "Crossbody Chain Bag Dominance",
+      "city": "Beijing",
+      "category": "bags",
+      "target_age_range": "22–32",
+      "cluster_summary": "Chain-strap crossbody bags surging in Beijing — worn both dressed up and with casual streetwear. Key styles: Chanel Classic Flap, Valentino Loco, Prada Re-Edition. Posts show high styling versatility and strong purchase intent. Younger demographic (22–32) dominant.",
+      "post_count": 5500,
+      "engagement_rate": 0.118,
+      "top_post_example": "链条包真的百搭，今天配运动裤都好看，Chanel这个颜色今年必入",
+      "trending_hashtags": [
+        "#链条包",
+        "#Chanel",
+        "#北京时尚"
+      ],
+      "brand_relevance": "high",
+      "week_on_week_growth": "+27%"
+    }
+  ]
+}
