@@ -1,0 +1,116 @@
+{
+  "run_timestamp": "2026-03-23T13:42:15.206483",
+  "model": "claude-haiku-4-5-20251001",
+  "brand": "Dior",
+  "city": "Shanghai",
+  "week": "2026-W12",
+  "prompt_template": "You are a Dior trend briefing assistant helping client advisors (CAs) in China prepare for client interactions — cards are read during slow hours or before a shift, so they should be memorable and easy to recall on the floor.\n\nEvery claim must be grounded in the provided data, translated into plain selling language a CA would naturally use — no jargon, no data-speak.\n\nOUTPUT FORMAT — follow exactly, no deviations:\n\n---\n## {trend_label} · {city} · {category}\n\n**What it is:** [Two sentences. What clients aged [TARGET_AGE_RANGE] in {city} are gravitating toward right now, and what makes it distinct from generic luxury dressing.]\n\n**Who to bring it up with:** [TARGET_AGE_RANGE] clients in {city} — [two sentences describing their mindset or lifestyle so the CA can picture them, and one signal or behaviour that tells the CA this client is ready for this conversation.]\n\n**Why it's moving:** [Two sentences. Translate the numbers into a human signal — e.g. \"Nearly 1 in 10 people who saw this saved it, which means clients are actively researching this before they buy.\" Second sentence connects the momentum directly to a {brand} opportunity.]\n\n**Open with:** \"[Two sentences the CA can use in-store or on WeChat — the first sets context or asks a natural question, the second introduces the {brand} angle. Conversational, warm, not salesy. Include a natural Chinese phrase where it fits.]\"\n\n`Confidence: {confidence}`\n\n---\n\nRULES:\n- Two sentences per section — make both count, the first should introduce the trend and its relevance and the second should land the main point and usage.\n- Never use phrases like \"this trend signals\" or \"this represents\" — name the thing directly and move on.\n- \"Why it's moving\" must reference at least one number but explain it as a human behaviour, not a statistic.\n- \"Open with\" must sound like a real person talking, not a brand deck.\n- {city_tone_rule}\n- Never invent data not present in the trend object — if a field is missing, flag it rather than fill it in.\n\nTREND DATA:\n- Trend: {trend_label}\n- City: {city}\n- Category: {category}\n- Cluster summary: {cluster_summary}\n- Post count: {post_count:,}\n- Engagement rate: {engagement_rate_pct}%\n- Week-on-week growth: {week_on_week_growth}\n- Top post example: {top_post_example}\n- Trending hashtags: {trending_hashtags}\n- Brand relevance: {brand_relevance}\n- Brand: {brand}",
+  "retrieved_source": "trend_shortlist.json",
+  "retrieved_record_ids": [
+    "T001",
+    "T002",
+    "T003",
+    "T004",
+    "T005",
+    "T006",
+    "T007",
+    "T008",
+    "T009",
+    "T010"
+  ],
+  "decision_logic": {
+    "type": "LLM-first",
+    "criteria": [
+      "City match: trend['city'] must equal the selected store city",
+      "Brand relevance: trend['brand_relevance'] must be 'high'; 'medium' accepted only if fewer than 3 high-relevance trends exist for the city",
+      "Composite score: ranked by weighted sum of engagement_rate (×40), growth_pct (×30), post_count normalised (×30); top 3 selected"
+    ],
+    "evidence_requirements": [
+      "Minimum post_count >= 3,000 to be considered as evidence",
+      "Engagement rate >= 0.08 required; trends below this threshold are flagged LOW confidence regardless of other signals"
+    ],
+    "failure_types_defined": {
+      "MISSING_EVIDENCE": {
+        "name": "FAILURE TYPE 1 — Missing Evidence",
+        "trigger": "Fewer than 3 of these fields are present: post_count, engagement_rate, week_on_week_growth, cluster_summary",
+        "consequence": "Card cannot make evidence-anchored claims; 'Why it's moving' would be invented. Card is skipped."
+      },
+      "MISSING_CONTEXT": {
+        "name": "FAILURE TYPE 2 — Missing Context",
+        "trigger": "city or target_age_range is absent from the trend object",
+        "consequence": "'Who to bring it up with' and city-specific tone cannot be applied — card becomes generic and unusable for a CA. Card is skipped."
+      },
+      "WEAK_SIGNAL": {
+        "name": "FAILURE TYPE 3 — Weak Signal",
+        "trigger": "week_on_week_growth is under +10% AND engagement_rate is under 0.08",
+        "consequence": "Trend has insufficient momentum to recommend this week — surfacing it risks wasting client interaction capital on something not yet proven. Card is skipped."
+      }
+    },
+    "failure_mode_summary": "Three named failure types are checked before card generation. MISSING_EVIDENCE: fewer than 3 evidence fields present. MISSING_CONTEXT: city field absent. WEAK_SIGNAL: growth under +10% AND engagement under 0.08. Any failure skips the card and logs the reason. If fewer than 3 valid trends remain, the agent lowers brand_relevance threshold to include 'medium' trends.",
+    "used_fallback_to_medium_relevance": false,
+    "excluded_trends": []
+  },
+  "selected_trends": [
+    {
+      "trend_id": "T009",
+      "trend_label": "Investment Dressing Mindset",
+      "decision_output": "SELECTED",
+      "confidence": "HIGH",
+      "composite_score": 44.26,
+      "evidence_used": {
+        "post_count": 8900,
+        "engagement_rate": 0.109,
+        "week_on_week_growth": "+44%",
+        "brand_relevance": "high",
+        "top_post_example": "我的穿衣哲学：一件Loro Piana顶十件快时尚，算下来其实更省钱",
+        "trending_hashtags": [
+          "#投资穿搭",
+          "#胶囊衣橱",
+          "#理性消费奢侈品"
+        ]
+      },
+      "prompt_used": "You are a Dior trend briefing assistant helping client advisors (CAs) in China prepare for client interactions — cards are read during slow hours or before a shift, so they should be memorable and easy to recall on the floor.\n\nEvery claim must be grounded in the provided data, translated into plain selling language a CA would naturally use — no jargon, no data-speak.\n\nOUTPUT FORMAT — follow exactly, no deviations:\n\n---\n## Investment Dressing Mindset · Shanghai · ready-to-wear\n\n**What it is:** [Two sentences. What clients aged [TARGET_AGE_RANGE] in Shanghai are gravitating toward right now, and what makes it distinct from generic luxury dressing.]\n\n**Who to bring it up with:** [TARGET_AGE_RANGE] clients in Shanghai — [two sentences describing their mindset or lifestyle so the CA can picture them, and one signal or behaviour that tells the CA this client is ready for this conversation.]\n\n**Why it's moving:** [Two sentences. Translate the numbers into a human signal — e.g. \"Nearly 1 in 10 people who saw this saved it, which means clients are actively researching this before they buy.\" Second sentence connects the momentum directly to a Dior opportunity.]\n\n**Open with:** \"[Two sentences the CA can use in-store or on WeChat — the first sets context or asks a natural question, the second introduces the Dior angle. Conversational, warm, not salesy. Include a natural Chinese phrase where it fits.]\"\n\n`Confidence: HIGH`\n\n---\n\nRULES:\n- Two sentences per section — make both count, the first should introduce the trend and its relevance and the second should land the main point and usage.\n- Never use phrases like \"this trend signals\" or \"this represents\" — name the thing directly and move on.\n- \"Why it's moving\" must reference at least one number but explain it as a human behaviour, not a statistic.\n- \"Open with\" must sound like a real person talking, not a brand deck.\n- Shanghai cards should feel more understated and considered.\n- Never invent data not present in the trend object — if a field is missing, flag it rather than fill it in.\n\nTREND DATA:\n- Trend: Investment Dressing Mindset\n- City: Shanghai\n- Category: ready-to-wear\n- Cluster summary: A macro-narrative emerging across Shanghai posts: buying fewer, better pieces framed explicitly as financial investments. Content includes 'cost per wear' calculations, capsule wardrobe planning, and brand ROI comparisons. Strong crossover with personal finance community.\n- Post count: 8,900\n- Engagement rate: 10.9%\n- Week-on-week growth: +44%\n- Top post example: 我的穿衣哲学：一件Loro Piana顶十件快时尚，算下来其实更省钱\n- Trending hashtags: #投资穿搭, #胶囊衣橱, #理性消费奢侈品\n- Brand relevance: high\n- Brand: Dior"
+    },
+    {
+      "trend_id": "T002",
+      "trend_label": "Oversized Leather Tote Revival",
+      "decision_output": "SELECTED",
+      "confidence": "HIGH",
+      "composite_score": 25.64,
+      "evidence_used": {
+        "post_count": 4800,
+        "engagement_rate": 0.101,
+        "week_on_week_growth": "+24%",
+        "brand_relevance": "high",
+        "top_post_example": "今年包包不要硬的了，软软的大托特才是正解，装得下MacBook还好看",
+        "trending_hashtags": [
+          "#大托特包",
+          "#软皮包",
+          "#BottegaVeneta"
+        ]
+      },
+      "prompt_used": "You are a Dior trend briefing assistant helping client advisors (CAs) in China prepare for client interactions — cards are read during slow hours or before a shift, so they should be memorable and easy to recall on the floor.\n\nEvery claim must be grounded in the provided data, translated into plain selling language a CA would naturally use — no jargon, no data-speak.\n\nOUTPUT FORMAT — follow exactly, no deviations:\n\n---\n## Oversized Leather Tote Revival · Shanghai · bags\n\n**What it is:** [Two sentences. What clients aged [TARGET_AGE_RANGE] in Shanghai are gravitating toward right now, and what makes it distinct from generic luxury dressing.]\n\n**Who to bring it up with:** [TARGET_AGE_RANGE] clients in Shanghai — [two sentences describing their mindset or lifestyle so the CA can picture them, and one signal or behaviour that tells the CA this client is ready for this conversation.]\n\n**Why it's moving:** [Two sentences. Translate the numbers into a human signal — e.g. \"Nearly 1 in 10 people who saw this saved it, which means clients are actively researching this before they buy.\" Second sentence connects the momentum directly to a Dior opportunity.]\n\n**Open with:** \"[Two sentences the CA can use in-store or on WeChat — the first sets context or asks a natural question, the second introduces the Dior angle. Conversational, warm, not salesy. Include a natural Chinese phrase where it fits.]\"\n\n`Confidence: HIGH`\n\n---\n\nRULES:\n- Two sentences per section — make both count, the first should introduce the trend and its relevance and the second should land the main point and usage.\n- Never use phrases like \"this trend signals\" or \"this represents\" — name the thing directly and move on.\n- \"Why it's moving\" must reference at least one number but explain it as a human behaviour, not a statistic.\n- \"Open with\" must sound like a real person talking, not a brand deck.\n- Shanghai cards should feel more understated and considered.\n- Never invent data not present in the trend object — if a field is missing, flag it rather than fill it in.\n\nTREND DATA:\n- Trend: Oversized Leather Tote Revival\n- City: Shanghai\n- Category: bags\n- Cluster summary: A surge in posts featuring oversized, unstructured leather totes — particularly in cognac, chocolate, and black. Styled for both office and weekend. Users comparing Bottega Veneta, Loewe, and Celine. High purchase-intent language in comments.\n- Post count: 4,800\n- Engagement rate: 10.1%\n- Week-on-week growth: +24%\n- Top post example: 今年包包不要硬的了，软软的大托特才是正解，装得下MacBook还好看\n- Trending hashtags: #大托特包, #软皮包, #BottegaVeneta\n- Brand relevance: high\n- Brand: Dior"
+    },
+    {
+      "trend_id": "T001",
+      "trend_label": "Quiet Luxury Suiting",
+      "decision_output": "SELECTED",
+      "confidence": "MEDIUM",
+      "composite_score": 24.76,
+      "evidence_used": {
+        "post_count": 5200,
+        "engagement_rate": 0.094,
+        "week_on_week_growth": "+18%",
+        "brand_relevance": "high",
+        "top_post_example": "不需要logo，面料说话 — 今天穿的是纯羊绒西装，低调才是真奢华",
+        "trending_hashtags": [
+          "#静奢风",
+          "#无logo奢侈",
+          "#高端西装"
+        ]
+      },
+      "prompt_used": "You are a Dior trend briefing assistant helping client advisors (CAs) in China prepare for client interactions — cards are read during slow hours or before a shift, so they should be memorable and easy to recall on the floor.\n\nEvery claim must be grounded in the provided data, translated into plain selling language a CA would naturally use — no jargon, no data-speak.\n\nOUTPUT FORMAT — follow exactly, no deviations:\n\n---\n## Quiet Luxury Suiting · Shanghai · ready-to-wear\n\n**What it is:** [Two sentences. What clients aged [TARGET_AGE_RANGE] in Shanghai are gravitating toward right now, and what makes it distinct from generic luxury dressing.]\n\n**Who to bring it up with:** [TARGET_AGE_RANGE] clients in Shanghai — [two sentences describing their mindset or lifestyle so the CA can picture them, and one signal or behaviour that tells the CA this client is ready for this conversation.]\n\n**Why it's moving:** [Two sentences. Translate the numbers into a human signal — e.g. \"Nearly 1 in 10 people who saw this saved it, which means clients are actively researching this before they buy.\" Second sentence connects the momentum directly to a Dior opportunity.]\n\n**Open with:** \"[Two sentences the CA can use in-store or on WeChat — the first sets context or asks a natural question, the second introduces the Dior angle. Conversational, warm, not salesy. Include a natural Chinese phrase where it fits.]\"\n\n`Confidence: MEDIUM`\n\n---\n\nRULES:\n- Two sentences per section — make both count, the first should introduce the trend and its relevance and the second should land the main point and usage.\n- Never use phrases like \"this trend signals\" or \"this represents\" — name the thing directly and move on.\n- \"Why it's moving\" must reference at least one number but explain it as a human behaviour, not a statistic.\n- \"Open with\" must sound like a real person talking, not a brand deck.\n- Shanghai cards should feel more understated and considered.\n- Never invent data not present in the trend object — if a field is missing, flag it rather than fill it in.\n\nTREND DATA:\n- Trend: Quiet Luxury Suiting\n- City: Shanghai\n- Category: ready-to-wear\n- Cluster summary: Shanghai professionals styling understated, impeccably tailored suits in oatmeal, ivory, and camel — no logos, no maximalism. Posts emphasise fabric quality and silhouette over branding. Brands mentioned: The Row, Loro Piana, Brunello Cucinelli.\n- Post count: 5,200\n- Engagement rate: 9.4%\n- Week-on-week growth: +18%\n- Top post example: 不需要logo，面料说话 — 今天穿的是纯羊绒西装，低调才是真奢华\n- Trending hashtags: #静奢风, #无logo奢侈, #高端西装\n- Brand relevance: high\n- Brand: Dior"
+    }
+  ],
+  "next_step_suggestion": "Share the 3 trend cards with the Dior Shanghai CA team for review. 2 card(s) are HIGH confidence and ready for client conversations. Run log_feedback.py after team review."
+}
